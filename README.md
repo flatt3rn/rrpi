@@ -4,8 +4,26 @@ A Python Script to use the Raspberry Pi as a kind of a Multimedia Device
 ### Introduction
 I started this Project over a Year ago. At the beginning it was just a script to stream some YouTube Videos on my TV. Later i added a WebRadio Stream and created an Android APP for it. This app will be added in the next days.
 
+### Installation
+Install livestreamer:
+```
+    sudo apt-get install livestreamer
+```
+Download Remote Raspberry Pi:
+```
+    git clone https://github.com/flatt3rn/rrpi
+```
+or
 
-
+Install Remote Raspberry Pi:
+```
+    cd rrpi
+    sudo python setup.py install
+```
+Uninstall Remote Raspberry Pi:
+```
+    sudo python setup.py uninstall
+```
 
 ### How Does it Work
 This Script starts a Server which listen to the Port 5563.
