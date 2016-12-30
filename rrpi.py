@@ -1,7 +1,15 @@
 #Dependencies:
 #	- Livestreamer (sudo apt-get install livestreamer)
 
-import commands, subprocess, threading, time, SocketServer, os, urllib2, datetime, pygame
+import commands
+import subprocess
+import threading
+import time
+import SocketServer
+import os
+import urllib2
+import datetime
+import pygame
 
 ####
 ###
@@ -9,6 +17,8 @@ import commands, subprocess, threading, time, SocketServer, os, urllib2, datetim
 Show_IP = 1
 #Change this to the common IP of your Raspberry Pi. If its connected with this ip the ip is not shown at the screen
 Reg_IP = "192.168.1.101"
+#If you have a different home path
+path_home = "/home/pi/"
 ###
 ####
 
@@ -18,9 +28,8 @@ C_IP = ""
 C_PORT = 5563
 C_BUFFER = 4096
 base_path = "/usr/lib/rrpi/"
-path_home = "/home/pi/"
 url_rip_program = 1
-url_streamtxt = "http://pastebin.com/raw/7PVdLp32"
+url_streamtxt = "https://raw.githubusercontent.com/flatt3rn/rrpi/master/streamtxt"
 # 0: youtube-dl
 # 1: livestreamer
 
@@ -162,6 +171,7 @@ def read_Directory(folder):
 	folderlist.sort()
 	filelist.sort()
 	directory = []
+	#Create a string with the whole folder content seperated by folders and files
 	for i1 in folderlist:
 		if not i1.startswith("."):
 			stxt += "%%/%%d" + i1
@@ -262,10 +272,11 @@ def start_TCPServer():
 
 def mainstuff():
 	global C_IP
-	C_IP = get_local_IP() #Gets Local IP
+	C_IP = get_local_IP()
 	if C_IP == "none":
 		exit()
 	print C_IP + ":" + str(C_PORT)
+	#Used a Thread so the script does not stuck there
 	bgt = threading.Thread(target=set_background,args = (base_path + "images/raspi_standard.jpg",))
 	bgt.start()
 	start_TCPServer()
