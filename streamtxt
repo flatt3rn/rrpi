@@ -5,7 +5,7 @@ splitsvar%%/%%src="%%/%%1
 splitsvar%%/%%"%%/%%0
 getpage%%/%%%%svar%%
 checklines%%/%%video.mp4
-split%%/%%'%%/%%1
+splitpage%%/%%'%%/%%1
 return
 %%&&%%
 db
